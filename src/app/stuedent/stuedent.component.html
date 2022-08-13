@@ -1,0 +1,57 @@
+<div class="text-center">
+    <h1>student works!</h1>
+</div>
+
+<input [(ngModel)]="studentName"><br>
+<input [ngModel]="studentName" (keyup)="helllo()"><br>
+
+<button (click)="helllo()">TEST</button><br>
+
+<div class="row mt-5">
+  <div class="col-2">
+  <select class="form-select" [(ngModel)]="grade" (ngModelChange)="gradeChange()">
+    <option *ngFor="let opt of opts" [ngValue]="opt.Value">{{opt.Name}}</option>
+</select>
+</div>
+
+<div class="col-2">
+  <select class="form-select" [(ngModel)]="room_ref" (ngModelChange)="roomChange()">
+    <option *ngFor="let opt of rooms" [ngValue]="opt.Value">{{opt.Name}}</option>
+</select>
+</div>
+
+<div class="col-3">
+  Grade = {{grade}}
+</div>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>No.1</th>
+      <th>Code</th>
+      <th>FullName</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{student.No}}</td>
+      <td>{{student.Code}}</td>
+      <td>{{student.FirstName}}</td>
+    </tr>
+  </tbody>
+</table>
+student : {{studentCode + ' ' + studentName}}
+
+<div class="mt-5" *ngIf="grade == 1; else aaa">
+    content A
+</div>
+
+<ng-template #aaa >
+    <div class="mt-5">
+        content C
+    </div>
+</ng-template>
+
+<div class="mt-5">
+    <a [routerLink]="['/room']">Room</a>
+</div>
